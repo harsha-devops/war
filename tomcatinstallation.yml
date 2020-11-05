@@ -1,8 +1,7 @@
 ---
 - name: Install Apache Tomcat  Server1
   hosts: 10.252.134.151
-  become: true
-
+  
   tasks:
   - name: Install Java
     yum:
@@ -21,6 +20,12 @@
     get_url:
       url: https://get.jenkins.io/war-stable/2.249.1/jenkins.war
       dest: /opt/apache-tomcat-8.5.58/webapps
+      
+  - name: Downloading the war from nexus from repo
+    get_url:
+      url: 	http://10.252.134.147:8081/repository/warDeploy/com/jdevs/Cloud-DevOps_1/1.0-SNAPSHOT/Cloud-DevOps_1-1.0-20201105.233002-1.war
+      dest: /opt/apache-tomcat-8.5.58/webapps
+      
   - name: Starting the Apache Tomcat Server Software
     shell: nohup /opt/apache-tomcat-8.5.58/bin/startup.sh
 
