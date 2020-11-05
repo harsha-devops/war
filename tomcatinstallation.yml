@@ -1,5 +1,5 @@
 ---
-- name: Install Apache Tomcat  Server
+- name: Install Apache Tomcat  Server1
   hosts: 10.252.134.151
   become: true
 
